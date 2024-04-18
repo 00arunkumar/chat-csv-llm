@@ -1,0 +1,9 @@
+langchain
+langchain-experimental
+streamlit
+tabulate
+matplotlib
+numpy
+openai
+pandas
+seaborn
