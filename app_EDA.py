@@ -1,9 +1,9 @@
 #Import required libraries
 
-#key ="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"
 
 import streamlit as st
 import pandas as pd
+
 
 from langchain.llms import OpenAI
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
@@ -72,8 +72,8 @@ if st.session_state.clicked[1]:
             st.write(duplicates)
             st.write("**Data Summarisation**")
             st.write(df.describe())
-            correlation_analysis = pandas_agent.run("Calculate correlations between numerical variables to identify potential relationships.")
-            st.write(correlation_analysis)
+            #correlation_analysis = pandas_agent.run("Calculate correlations between numerical variables to identify potential relationships.")
+            #st.write(correlation_analysis)
             outliers = pandas_agent.run("Identify outliers in the data that may be erroneous or that may have a significant impact on the analysis.")
             st.write(outliers)
             new_features = pandas_agent.run("What new features would be interesting to create?.")
@@ -100,6 +100,8 @@ if st.session_state.clicked[1]:
             dataframe_info = pandas_agent.run(user_question_dataframe)
             st.write(dataframe_info)
             return
+        
+
 
         #Main
 
@@ -114,6 +116,13 @@ if st.session_state.clicked[1]:
             function_question_variable()
 
             st.subheader('Further study')
+
+
+        st.subheader('Suggestion Queries for your CSV file')
+        sugg_query = pandas_agent.run("Give me 5 best Analytical question which i can ask from this upload csv data ?.")
+        st.write(sugg_query)
+
+
 
         if user_question_variable:
             user_question_dataframe = st.text_input( "Is there anything else you would like to know about your dataframe?")
