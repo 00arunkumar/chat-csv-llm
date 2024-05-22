@@ -6,7 +6,7 @@ import pandas as pd
 from openai import RateLimitError
 
 
-from langchain.llms import OpenAI
+from langchain_community.llms import OpenAI
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 
 
